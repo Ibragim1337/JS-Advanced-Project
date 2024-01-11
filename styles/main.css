@@ -9,8 +9,16 @@
   border: 2px solid black;
 }
 
-.task {
-  width: 100%;
+.main-list {
+  position: relative;
+}
+
+.create-task-container {
+  width: 500px;
   height: 150px;
   border: 2px solid black;
+  position: absolute;
+  right: 50%;
+  top: 50%;
 }
+
