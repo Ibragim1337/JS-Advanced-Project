@@ -1,0 +1,12 @@
+.header-container {
+  height: 60px;
+  background-color: #53699e;
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1 {
+  font-weight: 50;
+}
