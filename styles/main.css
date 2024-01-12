@@ -13,6 +13,15 @@
   display: none;
 }
 
+.close-btn{
+  cursor: pointer;
+  border: 0;
+  background-color: #ffe6ca;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
 .create-btn {
   width: 250px;
   height: 50px;
