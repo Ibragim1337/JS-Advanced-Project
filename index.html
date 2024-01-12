@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="index.css">
-  <script defer src="index.js"></script>
-</head>
-<body class="body">
-  <header class="header">
-    <div class="header-container">
-      <h1 class="h1">Интерактивный список задач</h1>
-    </div>
-    <main class="main">
-      <div class="main-container">
-        <button class="create-btn">Создать новую задачу</button>
-        <div class="task-list">
-          <div class="task">
-            <p class="task-p">Название задачи</p>
-            <p class="status-p">Статус задачи: <small class="status">Выполнен</small></p>
-            <button class="description-btn">Подробнее про задачу</button>
-            <button class="edit-btn"> Редактировать Задачу</button>
-            <button class="delete-btn"> Удалить задачу</button>
-          </div>
-        </div>
-        <div class="main-task-container">
-          <div class="create-task-container">
-            <button class="close-btn">X</button>
-            <p class="p-task-name"> Введите название задачи:<input type="text" class="task-h"></p>
-            <p class="p-task-description">Описание задачи:<input type="text" class="task-description"></p>
-            <button class="confirm-creating-task"> Создать задачу</button>
-          </div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <script defer src="index.js"></script>
+  </head>
+  <body class="body">
+    <header class="header">
+      <div class="header-container">
+        <h1 class="h1">Интерактивный список задач</h1>
       </div>
-    </main>
-  </header>
-</body>
+      <main class="main">
+        <div class="main-container">
+          <div class="menu-container">
+            <button class="create-btn">Создать новую задачу</button>
+            <div class="sort-div">
+              Сортировать по:
+              <select id="sort-method" name="sort">
+                <option value="apple">По названию</option>
+                <option value="banana">По статусу выполнения</option>
+                <option value="orange">По дате</option>
+              </select>
+            </div>
+          </div>
+          <div class="task-list">
+            <div class="task">
+              <p class="task-p">Название задачи</p>
+              <p class="status-p">
+                Статус задачи: <small class="status">Выполнен</small>
+              </p>
+              <button class="description-btn">Подробнее про задачу</button>
+              <button class="edit-btn">Редактировать Задачу</button>
+              <button class="delete-btn">Удалить задачу</button>
+            </div>
+          </div>
+          <div class="main-task-container">
+            <div class="create-task-container">
+              <button class="close-btn">X</button>
+              <p class="p-task-name">
+                Введите название задачи:<input type="text" class="task-h" />
+              </p>
+              <p class="p-task-description">
+                Описание задачи:<input type="text" class="task-description" />
+              </p>
+              <button class="confirm-creating-task">Создать задачу</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </header>
+  </body>
 </html>
