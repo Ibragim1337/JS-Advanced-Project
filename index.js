@@ -9,3 +9,4 @@ createTaskButton.onclick = function(){
 closeButton.onclick =function (){
   hiddenMenu.style.display = 'none';
 }
+
