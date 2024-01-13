@@ -19,9 +19,9 @@
             <div class="sort-div">
               Сортировать по:
               <select id="sort-method" name="sort">
-                <option value="apple">По названию</option>
-                <option value="banana">По статусу выполнения</option>
-                <option value="orange">По дате</option>
+                <option value="name">По названию</option>
+                <option value="status">По статусу выполнения</option>
+                <option value="date">По дате</option>
               </select>
             </div>
           </div>
@@ -46,6 +46,22 @@
                 Описание задачи:<input type="text" class="task-description" />
               </p>
               <button class="confirm-creating-task">Создать задачу</button>
+            </div>
+          </div>
+          <div class="redact-container">
+            <div class="redact-task">
+              <button class="close-redact-btn">X</button>
+              <p class="redact-p">
+                Изменить название:<input type="text" class="redact-input-h" />
+              </p>
+              <p class="redact-desc-p">
+                Изменить описание:
+                <input type="text" class="redact-input-desc" />
+              </p>
+              <p class="status-redact">
+                Изменить статус: выполнен <input type="checkbox" />
+              </p>
+              <button class="redact-btn">Изменить задачу</button>
             </div>
           </div>
         </div>

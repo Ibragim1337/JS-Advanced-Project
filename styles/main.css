@@ -42,6 +42,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* display: none; */
 
 }
 
@@ -122,4 +123,58 @@
 .menu-container {
   display: flex;
   justify-content: space-around;
+  border: 2px solid;
+}
+
+.redact-task {
+  width: 500px;
+  height: 250px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #ffe6ca;
+  position: absolute;
+  right: 600px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.redact-input-h {
+  border-radius: 5px;
+  width: 200px;
+  height: 30px;
+}
+
+.redact-input-desc{
+  width: 250px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.redact-p,
+.redact-desc-p,
+.status-redact{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.redact-btn {
+  width: 150px;
+  border-radius: 5px;
+}
+
+.redact-container {
+  display: none;
+}
+
+.close-redact-btn{
+  cursor: pointer;
+  border: 0;
+  background-color: #ffe6ca;
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
