@@ -7,17 +7,10 @@ let redact = document.querySelector('.redact-container');
 let closeRedact = document.querySelector('.close-redact-btn')
 
 createTaskButton.onclick = function(){
-  hiddenMenu.style.display = 'block';
+  window.location.href = "pages/taskcreate.html";
 }
 
 closeButton.onclick =function (){
-  hiddenMenu.style.display = 'none';
+  window.location.href = "/index.html";
 }
 
-edit.onclick = function() {
-  redact.style.display = 'block';
-}
-
-closeRedact.onclick = function (){
-  redact.style.display = 'none';
-}

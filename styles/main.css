@@ -9,9 +9,9 @@
   border: 2px solid black;
 }
 
-.main-task-container {
+/* .main-task-container {
   display: none;
-}
+} */
 
 .sort-div {
   border: 2px solid;
@@ -29,6 +29,7 @@
   position: absolute;
   top: 5px;
   right: 10px;
+  text-decoration: none;
 }
 
 .task-list {
@@ -166,9 +167,9 @@
   border-radius: 5px;
 }
 
-.redact-container {
+/* .redact-container {
   display: none;
-}
+} */
 
 .close-redact-btn{
   cursor: pointer;
@@ -178,3 +179,4 @@
   top: 5px;
   right: 10px;
 }
+
