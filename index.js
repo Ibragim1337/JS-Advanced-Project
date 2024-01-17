@@ -7,11 +7,15 @@ let redact = document.querySelector('.redact-container');
 let closeRedact = document.querySelector('.close-redact-btn')
 
 createTaskButton.onclick = function(){
-  window.location.href = "pages/taskcreate.html";
+  hiddenMenu.style.display = 'block';
 }
 
 closeButton.onclick =function (){
-  window.location.href = "/index.html";
+  hiddenMenu.style.display = 'none';
 }
 
-//commit test
+class Task {
+  constructor(){
+    
+  }
+}
