@@ -48,3 +48,14 @@ class Task {
     return this.#status;
   }
 }
+
+class Tasks{
+  #tasks;
+  addTask(...tasks) {
+    tasks.forEach((task) => {
+      if(!this.#tasks.includes(task)) {
+        this.#tasks.push(task);
+      }
+    })
+  }
+}
