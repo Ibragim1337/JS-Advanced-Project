@@ -15,7 +15,36 @@ closeButton.onclick =function (){
 }
 
 class Task {
-  constructor(){
-    
+  #id;
+  #taskName;
+  #description;
+  #taskData;
+  #status
+  constructor(taskName, descrition, taskData,status ){
+    this.#id = "id" + Math.random().toString(16).slice(2);
+    this.taskName = taskName;
+    this.#description = descrition;
+    this.#taskData = taskData;
+    this.#status = status;
+  }
+
+  get id(){
+    return this.#id;
+  }
+
+  get taskName(){
+    return this.#taskName;
+  }
+
+  get descrition(){
+    return this.#description;
+  }
+
+  get taskData(){
+    return this.#taskData;
+  }
+
+  get status(){
+    return this.#status;
   }
 }
