@@ -37,7 +37,7 @@ function createTask(event) {
                         </p>
                       <button class="description-btn">Подробнее про задачу</button>
                       <button class="edit-btn">Редактировать Задачу</button>
-                      <button class="delete-btn">Удалить задачу</button>
+                      <button class="delete-btn" data-action="delete">Удалить задачу</button>
                     </div>`;
 
  //добовляю на страницу
@@ -47,7 +47,19 @@ tasksList.insertAdjacentHTML('beforeend', taskHTML);
 taskInput.value = '';
 }
 
+//удаление задачи 
 
+tasksList.addEventListener('click', deleteTask);
+
+
+function deleteTask(event){
+  if (event.target.dataset.action === 'delete') {
+    console.log('DELETE');
+    const parentNode = event.target.closest('.task');
+
+    parentNode.remove();
+  }
+}
 
 // class Task {
 //   #id;
