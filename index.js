@@ -18,6 +18,7 @@ closeButton.onclick =function (){
 
 const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
+const taskInputDesc = document.querySelector('#taskInputDesc')
 const tasksList = document.querySelector('#tasksList');
 
 
@@ -29,22 +30,46 @@ function createTask(event) {
   event.preventDefault();
 
   const taskText = taskInput.value;
-  
+  const taskIDescText = taskInputDesc.value;
+  const currentTime = new Date();
+  const formattTime = currentTime.toLocaleString();
+
   const taskHTML = `<div class="task">
-                      <p class="task-p">${taskText}</p>
-                      <p class="status-p">
-                          Статус задачи: <small class="status">Выполнен <input class="status-input" type="checkbox"></small>
+                      <div class="visible">
+                        <p class="task-p">${taskText}</p>
+                        <p class="status-p">
+                          Статус задачи:
+                          <small class="status"
+                             >Выполнен
+                         <input
+                             class="status-input"
+                            type="checkbox"
+                            id="statusInput"
+                                        /></small>
                         </p>
-                      <button class="description-btn">Подробнее про задачу</button>
-                      <button class="edit-btn">Редактировать Задачу</button>
-                      <button class="delete-btn" data-action="delete">Удалить задачу</button>
-                    </div>`;
+                        <button class="description-btn" type="button">
+                            Подробнее про задачу
+                          </button>
+                        <button class="edit-btn" type="button" data-action="delete">
+                             Редактировать Задачу
+                          </button>
+                        <button class="delete-btn" type="button">Удалить задачу</button>
+                    </div>
+
+                  <div class="desc">
+                    <p class="description" id="taskDescription">Описание:${taskIDescText}</p>
+                    <p class="dataDescription" id="taskDescription">
+                        Дата создание задачи: ${formattTime}
+                      </p>
+                 </div>
+            </div>`;
 
  //добовляю на страницу
 
 tasksList.insertAdjacentHTML('beforeend', taskHTML);
 
 taskInput.value = '';
+taskInputDesc.value ='';
 hiddenMenu.style.display = 'none';
 }
 
@@ -62,23 +87,34 @@ function deleteTask(event){
   }
 }
 
+
+// подробнее про задачу 
+
+
+
+
+
+
+
+
+
 //отметка о том что задача выполнена
 
 
 
-const statusInput = document.querySelector('#statusInput');
+// const statusInput = document.querySelector('#statusInput');
 
-statusInput.addEventListener('change', function(event){
-  if(statusInput.checked){
-    const parentNode = event.target.closest('.task');
+// statusInput.addEventListener('change', function(event){
+//   if(statusInput.checked){
+//     const parentNode = event.target.closest('.task');
 
-    parentNode.style.backgroundColor = 'lightgreen';
-  } else {
-    parentNode.style.backgroundColor = '';
-  }
-});
+//     parentNode.style.backgroundColor = 'lightgreen';
+//   } else {
+//     parentNode.style.backgroundColor = '';
+//   }
+// });
 
-
+//////////////////////////////////////////////////////////////////////
 
 // class Task {
 //   #id;

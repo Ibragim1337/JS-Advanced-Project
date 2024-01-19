@@ -27,25 +27,55 @@
           </div>
           <div class="task-list" id="tasksList">
             <div class="task" id="prototype">
-              <p class="task-p">Название задачи</p>
-              <p class="status-p">
-                Статус задачи: <small class="status">Выполнен <input class="status-input" type="checkbox" id="statusInput"></small>
-              </p>
-              <button class="description-btn" type="button">Подробнее про задачу</button>
-              <button class="edit-btn" type="button" data-action="delete">Редактировать Задачу</button>
-              <button class="delete-btn" type="button">Удалить задачу</button>
+              <div class="visible">
+                <p class="task-p">Название задачи</p>
+                <p class="status-p">
+                  Статус задачи:
+                  <small class="status"
+                    >Выполнен
+                    <input
+                      class="status-input"
+                      type="checkbox"
+                      id="statusInput"
+                  /></small>
+                </p>
+                <button class="description-btn" type="button">
+                  Подробнее про задачу
+                </button>
+                <button class="edit-btn" type="button" data-action="delete">
+                  Редактировать Задачу
+                </button>
+                <button class="delete-btn" type="button">Удалить задачу</button>
+              </div>
+
+              <div class="desc">
+                <p class="description" id="taskDescription">Описание:</p>
+                <p class="dataDescription" id="taskDescription">
+                  Дата создание задачи:
+                </p>
+              </div>
             </div>
           </div>
           <div class="main-task-container">
             <form id="form" class="create-task-container">
               <button type="button" class="close-btn">X</button>
               <p class="p-task-name">
-                Введите название задачи:<input type="text" class="task-h" id="taskInput"/>
+                Введите название задачи:<input
+                  type="text"
+                  class="task-h"
+                  id="taskInput"
+                />
               </p>
               <p class="p-task-description">
-                Описание задачи:<input type="text" class="task-description" />
+                Описание задачи:<input
+                  type="text"
+                  class="task-description"
+                  id="taskInputDesc"
+                />
               </p>
-              <button type ="submit" class="confirm-creating-task">Создать задачу</button>
+              <button type="submit" class="confirm-creating-task">
+                Создать задачу
+              </button>
             </form>
           </div>
           <div class="redact-container">
