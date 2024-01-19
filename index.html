@@ -25,8 +25,8 @@
               </select>
             </div>
           </div>
-          <div class="task-list">
-            <div class="task">
+          <div class="task-list" id="tasksList">
+            <div class="task" id="prototype">
               <p class="task-p">Название задачи</p>
               <p class="status-p">
                 Статус задачи: <small class="status">Выполнен <input class="status-input" type="checkbox"></small>
@@ -37,16 +37,16 @@
             </div>
           </div>
           <div class="main-task-container">
-            <div class="create-task-container">
-              <button class="close-btn">X</button>
+            <form id="form" class="create-task-container">
+              <button type="button" class="close-btn">X</button>
               <p class="p-task-name">
-                Введите название задачи:<input type="text" class="task-h" />
+                Введите название задачи:<input type="text" class="task-h" id="taskInput"/>
               </p>
               <p class="p-task-description">
                 Описание задачи:<input type="text" class="task-description" />
               </p>
-              <button class="confirm-creating-task">Создать задачу</button>
-            </div>
+              <button type ="submit" class="confirm-creating-task">Создать задачу</button>
+            </form>
           </div>
           <div class="redact-container">
             <div class="redact-task">

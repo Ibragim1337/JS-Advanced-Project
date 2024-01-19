@@ -14,48 +14,83 @@ closeButton.onclick =function (){
   hiddenMenu.style.display = 'none';
 }
 
-class Task {
-  #id;
-  #taskName;
-  #description;
-  #taskData;
-  #status
-  constructor(taskName, descrition, taskData,status ){
-    this.#id = "id" + Math.random().toString(16).slice(2);
-    this.taskName = taskName;
-    this.#description = descrition;
-    this.#taskData = taskData;
-    this.#status = status;
-  }
+// добавление задачи 
 
-  get id(){
-    return this.#id;
-  }
+const form = document.querySelector('#form');
+const taskInput = document.querySelector('#taskInput');
+const tasksList = document.querySelector('#tasksList');
 
-  get taskName(){
-    return this.#taskName;
-  }
 
-  get descrition(){
-    return this.#description;
-  }
+form.addEventListener('submit', createTask);
 
-  get taskData(){
-    return this.#taskData;
-  }
 
-  get status(){
-    return this.#status;
-  }
+function createTask(event) {
+  
+  event.preventDefault();
+
+  const taskText = taskInput.value;
+  
+  const taskHTML = `<div class="task">
+                      <p class="task-p">${taskText}</p>
+                      <p class="status-p">
+                          Статус задачи: <small class="status">Выполнен <input class="status-input" type="checkbox"></small>
+                        </p>
+                      <button class="description-btn">Подробнее про задачу</button>
+                      <button class="edit-btn">Редактировать Задачу</button>
+                      <button class="delete-btn">Удалить задачу</button>
+                    </div>`;
+
+ //добовляю на страницу
+
+tasksList.insertAdjacentHTML('beforeend', taskHTML);
+
+taskInput.value = '';
 }
 
-class Tasks{
-  #tasks;
-  addTask(...tasks) {
-    tasks.forEach((task) => {
-      if(!this.#tasks.includes(task)) {
-        this.#tasks.push(task);
-      }
-    })
-  }
-}
+
+
+// class Task {
+//   #id;
+//   #taskName;
+//   #description;
+//   #taskData;
+//   #status
+//   constructor(taskName, descrition, taskData,status ){
+//     this.#id = "id" + Math.random().toString(16).slice(2);
+//     this.taskName = taskName;
+//     this.#description = descrition;
+//     this.#taskData = taskData;
+//     this.#status = status;
+//   }
+
+//   get id(){
+//     return this.#id;
+//   }
+
+//   get taskName(){
+//     return this.#taskName;
+//   }
+
+//   get descrition(){
+//     return this.#description;
+//   }
+
+//   get taskData(){
+//     return this.#taskData;
+//   }
+
+//   get status(){
+//     return this.#status;
+//   }
+// }
+
+// class Tasks{
+//   #tasks;
+//   addTask(...tasks) {
+//     tasks.forEach((task) => {
+//       if(!this.#tasks.includes(task)) {
+//         this.#tasks.push(task);
+//       }
+//     })
+//   }
+// }
