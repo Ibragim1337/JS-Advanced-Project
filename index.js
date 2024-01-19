@@ -47,13 +47,13 @@ function createTask(event) {
                             id="statusInput"
                                         /></small>
                         </p>
-                        <button class="description-btn" type="button">
+                        <button class="description-btn" type="button" data-action="showmore">
                             Подробнее про задачу
                           </button>
-                        <button class="edit-btn" type="button" data-action="delete">
+                        <button class="edit-btn" type="button" >
                              Редактировать Задачу
                           </button>
-                        <button class="delete-btn" type="button">Удалить задачу</button>
+                        <button class="delete-btn" type="button" data-action="delete">Удалить задачу</button>
                     </div>
 
                   <div class="desc">
@@ -90,7 +90,14 @@ function deleteTask(event){
 
 // подробнее про задачу 
 
+tasksList.addEventListener('clikc', showDesc);
 
+function showDesc(event){
+  if(event.target.dataset.action === 'showmore'){
+   console.log('asdasfjasdjghosdhjgoisfhdjsisd');
+  }
+
+}
 
 
 
