@@ -42,7 +42,7 @@ tasks.forEach(function(task){
                     <p class="dataDescription" id="taskDescription">
                         Дата создание задачи: ${task.taskDate}
                       </p>
-                      <p class="idDesc">${task.id}</p>
+                      <p class="idDesc">ID задачи:<span class="idNumber">${task.id}</span></p>
                  </div>
             </div>`;
 
@@ -113,7 +113,7 @@ function createTask(event) {
                     <p class="dataDescription" id="taskDescription">
                         Дата создание задачи: ${newTask.taskDate}
                       </p>
-                      <p class="idDesc">${newTask.id}</p>
+                      <p class="idDesc">ID задачи: <span class="idNumber">${newTask.id}</span></p>
                  </div>
             </div>`;
 
@@ -125,7 +125,7 @@ function createTask(event) {
   taskInputDesc.value = "";
   hiddenMenu.style.display = "none";
 
-  //сохранение изменений в localStorage
+  //сохранение изменениий в localStorage
 
   saveToLocalStorage();
 }
@@ -148,14 +148,38 @@ function deleteTask(event) {
 
   tasks.splice(index, 1);
 
-  console.log(tasks);
-
   //сохранение изменений в localStorage
 
   saveToLocalStorage();
 
+  //удаляем
+
   parentNode.remove();
 }
+
+tasksList.addEventListener('click', showMore);
+
+function showMore(event) {
+  if (event.target.dataset.action === 'showmore') {
+    const visibleContainer = event.target.closest('.visible');
+    const descChild = visibleContainer.nextElementSibling;
+
+    
+    if (descChild.style.display === 'block') {
+      
+      descChild.style.display = 'none';
+    } else {
+      
+      descChild.style.display = 'block';
+    }
+  }
+}
+
+
+
+
+
+
 
 //работа с localstorage
 
@@ -163,18 +187,5 @@ function saveToLocalStorage() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-//отметка о том что задача выполнена
 
-// const statusInput = document.querySelector('#statusInput');
 
-// statusInput.addEventListener('change', function(event){
-//   if(statusInput.checked){
-//     const parentNode = event.target.closest('.task');
-
-//     parentNode.style.backgroundColor = 'lightgreen';
-//   } else {
-//     parentNode.style.backgroundColor = '';
-//   }
-// });
-
-//////////////////////////////////////////////////////////////////////
