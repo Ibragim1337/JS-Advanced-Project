@@ -1,42 +1,23 @@
-let createTaskButton = document.querySelector('.create-btn');
-let hiddenMenu = document.querySelector('.main-task-container');
-let closeButton = document.querySelector('.close-btn');
-let body = document.querySelector('body');
+let createTaskButton = document.querySelector(".create-btn");
+let hiddenMenu = document.querySelector(".main-task-container");
+let closeButton = document.querySelector(".close-btn");
+let body = document.querySelector("body");
+const tasksList = document.querySelector("#tasksList");
 
+let tasks = [];
 
+//получаем данные из localStorage 
 
-
-createTaskButton.onclick = function(){
-  hiddenMenu.style.display = 'block';
+if(localStorage.getItem('tasks')){
+  tasks = JSON.parse(localStorage.getItem('tasks'));
 }
 
-closeButton.onclick =function (){
-  hiddenMenu.style.display = 'none';
-}
+//вносим данные на страницу 
 
-// добавление задачи 
-
-const form = document.querySelector('#form');
-const taskInput = document.querySelector('#taskInput');
-const taskInputDesc = document.querySelector('#taskInputDesc')
-const tasksList = document.querySelector('#tasksList');
-
-
-form.addEventListener('submit', createTask);
-
-
-function createTask(event) {
-  
-  event.preventDefault();
-
-  const taskText = taskInput.value;
-  const taskIDescText = taskInputDesc.value;
-  const currentTime = new Date();
-  const formattTime = currentTime.toLocaleString();
-
-  const taskHTML = `<div class="task">
+tasks.forEach(function(task){
+  const taskHTML = `<div class="task" id='${task.id}'>
                       <div class="visible">
-                        <p class="task-p">${taskText}</p>
+                        <p class="task-p">${task.taskName}</p>
                         <p class="status-p">
                           Статус задачи:
                           <small class="status"
@@ -57,57 +38,132 @@ function createTask(event) {
                     </div>
 
                   <div class="desc">
-                    <p class="description" id="taskDescription">Описание:${taskIDescText}</p>
+                    <p class="description" id="taskDescription">Описание:${task.taskDesc}</p>
                     <p class="dataDescription" id="taskDescription">
-                        Дата создание задачи: ${formattTime}
+                        Дата создание задачи: ${task.taskDate}
                       </p>
+                      <p class="idDesc">${task.id}</p>
                  </div>
             </div>`;
 
- //добовляю на страницу
+  //добовляю на страницу
 
-tasksList.insertAdjacentHTML('beforeend', taskHTML);
+  tasksList.insertAdjacentHTML("beforeend", taskHTML);
+})
 
-taskInput.value = '';
-taskInputDesc.value ='';
-hiddenMenu.style.display = 'none';
+createTaskButton.onclick = function () {
+  hiddenMenu.style.display = "block";
+};
+
+closeButton.onclick = function () {
+  hiddenMenu.style.display = "none";
+};
+
+// добавление задачи
+
+const form = document.querySelector("#form");
+const taskInput = document.querySelector("#taskInput");
+const taskInputDesc = document.querySelector("#taskInputDesc");
+
+
+form.addEventListener("submit", createTask);
+
+function createTask(event) {
+  event.preventDefault();
+
+  const taskText = taskInput.value;
+  const taskIDescText = taskInputDesc.value;
+  const currentTime = new Date();
+  const formattTime = currentTime.toLocaleString();
+  const taskId = "id" + Math.random().toString(16).slice(2);
+
+  const newTask = {
+    id: taskId,
+    taskName: taskText,
+    taskDate: formattTime,
+    taskDesc: taskIDescText,
+  };
+
+  tasks.push(newTask);
+
+  const taskHTML = `<div class="task" id='${newTask.id}'>
+                      <div class="visible">
+                        <p class="task-p">${newTask.taskName}</p>
+                        <p class="status-p">
+                          Статус задачи:
+                          <small class="status"
+                             >Выполнен
+                         <input
+                             class="status-input"
+                            type="checkbox"
+                            id="statusInput"
+                                        /></small>
+                        </p>
+                        <button class="description-btn" type="button" data-action="showmore">
+                            Подробнее про задачу
+                          </button>
+                        <button class="edit-btn" type="button" >
+                             Редактировать Задачу
+                          </button>
+                        <button class="delete-btn" type="button" data-action="delete">Удалить задачу</button>
+                    </div>
+
+                  <div class="desc">
+                    <p class="description" id="taskDescription">Описание:${newTask.taskDesc}</p>
+                    <p class="dataDescription" id="taskDescription">
+                        Дата создание задачи: ${newTask.taskDate}
+                      </p>
+                      <p class="idDesc">${newTask.id}</p>
+                 </div>
+            </div>`;
+
+  //добовляю на страницу
+
+  tasksList.insertAdjacentHTML("beforeend", taskHTML);
+
+  taskInput.value = "";
+  taskInputDesc.value = "";
+  hiddenMenu.style.display = "none";
+
+  //сохранение изменений в localStorage
+
+  saveToLocalStorage();
 }
 
-//удаление задачи 
+//удаление задачи
 
-tasksList.addEventListener('click', deleteTask);
+tasksList.addEventListener("click", deleteTask);
 
+function deleteTask(event) {
+  if (event.target.dataset.action !== "delete") return;
 
-function deleteTask(event){
+  const parentNode = event.target.closest(".task");
+  const id = parentNode.id;
 
-  if (event.target.dataset.action === 'delete') {
-    const parentNode = event.target.closest('.task');
+  const index = tasks.findIndex(function (task) {
+    if (task.id == id) {
+      return true;
+    }
+  });
 
-    parentNode.remove();
-  }
+  tasks.splice(index, 1);
+
+  console.log(tasks);
+
+  //сохранение изменений в localStorage
+
+  saveToLocalStorage();
+
+  parentNode.remove();
 }
 
+//работа с localstorage
 
-// подробнее про задачу 
-
-tasksList.addEventListener('clikc', showDesc);
-
-function showDesc(event){
-  if(event.target.dataset.action === 'showmore'){
-   console.log('asdasfjasdjghosdhjgoisfhdjsisd');
-  }
-
+function saveToLocalStorage() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-
-
-
-
-
-
 
 //отметка о том что задача выполнена
-
-
 
 // const statusInput = document.querySelector('#statusInput');
 
@@ -122,49 +178,3 @@ function showDesc(event){
 // });
 
 //////////////////////////////////////////////////////////////////////
-
-// class Task {
-//   #id;
-//   #taskName;
-//   #description;
-//   #taskData;
-//   #status
-//   constructor(taskName, descrition, taskData,status ){
-//     this.#id = "id" + Math.random().toString(16).slice(2);
-//     this.taskName = taskName;
-//     this.#description = descrition;
-//     this.#taskData = taskData;
-//     this.#status = status;
-//   }
-
-//   get id(){
-//     return this.#id;
-//   }
-
-//   get taskName(){
-//     return this.#taskName;
-//   }
-
-//   get descrition(){
-//     return this.#description;
-//   }
-
-//   get taskData(){
-//     return this.#taskData;
-//   }
-
-//   get status(){
-//     return this.#status;
-//   }
-// }
-
-// class Tasks{
-//   #tasks;
-//   addTask(...tasks) {
-//     tasks.forEach((task) => {
-//       if(!this.#tasks.includes(task)) {
-//         this.#tasks.push(task);
-//       }
-//     })
-//   }
-// }
