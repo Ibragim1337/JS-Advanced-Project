@@ -3,6 +3,9 @@ let hiddenMenu = document.querySelector(".main-task-container");
 let closeButton = document.querySelector(".close-btn");
 let body = document.querySelector("body");
 const tasksList = document.querySelector("#tasksList");
+const nameError = document.querySelector('.nameError');
+const descError = document.querySelector('.descError');
+const regex = /^((\p{L}|\d)+(\s(\p{L}|\d)+)*){2,16}$/u;
 
 let tasks = [];
 

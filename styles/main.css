@@ -76,7 +76,7 @@
 
 .create-task-container {
   width: 500px;
-  height: 250px;
+  height: auto;
   border: 2px solid black;
   border-radius: 10px;
   background-color: #ffe6ca;
@@ -85,9 +85,10 @@
   top: 200px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
+  padding: 18px;
 }
 
 
@@ -205,4 +206,16 @@
 
 .idNumber{
   color: red;
+}
+
+.nameError {
+  font-size: 13px;
+  color: red;
+  display: none;
+}
+
+.descError{
+  font-size: 13px;
+  color: red;
+  display: none;
 }
